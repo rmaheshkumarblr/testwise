@@ -1,0 +1,25 @@
+{
+  "name": "testwise",
+  "homepage": "https://github.com/saurabhsood91/testwise",
+  "authors": [
+    "saurabhsood91 <saurabhsood91@gmail.com>"
+  ],
+  "description": "testwise app",
+  "main": "",
+  "moduleType": [],
+  "license": "GPLv3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.8",
+    "angular-ui-router": "~0.2.15",
+    "angular-bootstrap": "~0.14.3",
+    "font-awesome": "~4.5.0"
+  }
+}
