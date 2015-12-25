@@ -1,6 +1,6 @@
 "use strict"
 
 angular.module('TestWise', ['ui.bootstrap'])
-.controller('MainController', function(){
-  //
-});
+.controller('MainController', ['$scope', function($scope){
+  var self = this;
+}]);
