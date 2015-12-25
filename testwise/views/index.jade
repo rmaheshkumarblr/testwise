@@ -1,5 +1,17 @@
-extends layout
+html(ng-app="TestWise")
+head
+  title Testwise
+body(ng-controller="MainController as ctrl")
 
-block content
-  h1= title
-  p Welcome to #{title}
+  nav(class="navbar navbar-inverse navbar-static-top")
+    div(class="navbar-header")
+      a(class="navbar-brand brand-title brandname") Testwise
+    div(class="container")
+
+  script(src="bower_components/angular/angular.js")
+  script(src="js/main.js")
+  script(src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Poiret+One")
+  link(rel="stylesheet", href="css/style.css")
+  link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.css")
+  link(rel="stylesheet", href="bower_components/font-awesome/css/font-awesome.css")
