@@ -6,3 +6,18 @@ a {
   font-family: 'Poiret One', cursive;
   font-size: 35px !important;
 }
+
+.splash {
+  margin-top: 40px;
+  font-size: 20em !important;
+}
+
+.main-title{
+  text-align: center;
+}
+
+.main-desc {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Poiret One', cursive;
+}
