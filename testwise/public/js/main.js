@@ -11,10 +11,21 @@ angular.module('TestWise', ['ui.bootstrap'])
     });
   };
 }])
-.controller('LoginModalInstanceCtrl', ['$modalInstance',function ($modalInstance) {
+
+.controller('LoginModalInstanceCtrl', ['$modalInstance', '$http',function ($modalInstance, $http) {
   var self = this;
   self.login = function() {
     // Login logic goes here
+    $http.get('/login', {
+      params: {
+        username: self.username,
+        password: self.password
+      }
+    })
+    .success(function(data, status, headers, config){
+      //
+      console.log(data);
+    });
   };
   self.cancel = function () {
     $modalInstance.dismiss('cancel');

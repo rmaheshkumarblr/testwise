@@ -3,9 +3,9 @@
 </div>
 <div class="modal-body">
   <label for="username">Username</label>
-  <input id="username" type="text" class="form-control" />
+  <input id="username" type="text" class="form-control" ng-model="username"/>
   <label for="password">Password</label>
-  <input type="password" id="password" class="form-control" />
+  <input type="password" id="password" class="form-control" ng-model="password"/>
 </div>
 <div class="modal-footer">
   <button class="btn btn-success" ng-click="ctrl.login()">Login</button>
