@@ -1,13 +1,15 @@
 html(ng-app="TestWise")
 head
   title Testwise
-body(ng-controller="MainController as ctrl")
+body(ng-controller="createNewUserController as ctrl")
   nav(class="navbar navbar-inverse navbar-static-top")
     div(class="navbar-header")
       a(class="navbar-brand brand-title brandname") Testwise
-  button(id="createNewUser") Create a new user
+
+  button(id="test") Test
+
   script(src="bower_components/angular/angular.js")
-  script(src="js/main.js")
+  script(src="js/createNewUser.js")
   script(src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js")
   link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Poiret+One")
   link(rel="stylesheet", href="css/style.css")

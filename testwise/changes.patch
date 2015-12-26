@@ -1,0 +1,89 @@
+diff --git a/data/local.0 b/data/local.0
+index a8b2e5a..a159362 100644
+Binary files a/data/local.0 and b/data/local.0 differ
+diff --git a/data/local.ns b/data/local.ns
+index 97e1d29..194ea68 100644
+Binary files a/data/local.ns and b/data/local.ns differ
+diff --git a/data/mongod.lock b/data/mongod.lock
+index e69de29..fda0cb4 100755
+--- a/data/mongod.lock
++++ b/data/mongod.lock
+@@ -0,0 +1 @@
++4298
+diff --git a/testwise/app.js b/testwise/app.js
+index 80a3c36..43640a3 100644
+--- a/testwise/app.js
++++ b/testwise/app.js
+@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
+ var bodyParser = require('body-parser');
+ 
+ var routes = require('./routes/index');
+-var users = require('./routes/users');
++// var users = require('./routes/users');
+ 
+ var app = express();
+ 
+@@ -23,7 +23,7 @@ app.use(cookieParser());
+ app.use(express.static(path.join(__dirname, 'public')));
+ 
+ app.use('/', routes);
+-app.use('/users', users);
++// app.use('/users', users);
+ 
+ // catch 404 and forward to error handler
+ app.use(function(req, res, next) {
+diff --git a/testwise/public/js/main.js b/testwise/public/js/main.js
+index 799ccab..a5db7dc 100644
+--- a/testwise/public/js/main.js
++++ b/testwise/public/js/main.js
+@@ -4,3 +4,9 @@ angular.module('TestWise', ['ui.bootstrap'])
+ .controller('MainController', ['$scope', function($scope){
+   var self = this;
+ }]);
++
++
++document.getElementById("createNewUser").onclick = function () 
++{
++    location.href = "createNewUser";
++};
+diff --git a/testwise/routes/index.js b/testwise/routes/index.js
+index ecca96a..d574eb3 100644
+--- a/testwise/routes/index.js
++++ b/testwise/routes/index.js
+@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
+   res.render('index', { title: 'Express' });
+ });
+ 
++
++router.get('/createNewUser', function(req, res, next) {
++  res.render('createNewUser', { title: 'Create a new user' });
++});
++
+ module.exports = router;
+diff --git a/testwise/routes/users.js b/testwise/routes/users.js
+deleted file mode 100644
+index 623e430..0000000
+--- a/testwise/routes/users.js
++++ /dev/null
+@@ -1,9 +0,0 @@
+-var express = require('express');
+-var router = express.Router();
+-
+-/* GET users listing. */
+-router.get('/', function(req, res, next) {
+-  res.send('respond with a resource');
+-});
+-
+-module.exports = router;
+diff --git a/testwise/views/index.jade b/testwise/views/index.jade
+index 78a0da8..f396369 100644
+--- a/testwise/views/index.jade
++++ b/testwise/views/index.jade
+@@ -5,6 +5,7 @@ body(ng-controller="MainController as ctrl")
+   nav(class="navbar navbar-inverse navbar-static-top")
+     div(class="navbar-header")
+       a(class="navbar-brand brand-title brandname") Testwise
++  button(id="createNewUser") Create a new user
+   script(src="bower_components/angular/angular.js")
+   script(src="js/main.js")
+   script(src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js")
