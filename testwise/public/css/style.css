@@ -7,6 +7,17 @@ a {
   font-size: 35px !important;
 }
 
+.login {
+  color: #FFF;
+}
+
+.nav {
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
 .splash {
   margin-top: 40px;
   font-size: 20em !important;
