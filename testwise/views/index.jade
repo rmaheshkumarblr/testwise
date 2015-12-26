@@ -9,7 +9,7 @@ body(ng-controller="MainController as ctrl")
       div(class="navbar-collapse collapse", style="")
         ul(class="nav navbar-nav navbar-right")
           li(class="active login")
-            a(href="#") Login
+            a(href="#", ng-click="ctrl.openLoginDialog()") Login
               span(class="sr-only") (current)
   p(class="main-title")
     i(class="fa fa-graduation-cap splash")
