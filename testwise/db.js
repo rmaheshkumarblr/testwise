@@ -47,8 +47,25 @@ MongoClient.connect(url, function(err, db)
                     db.collection('answers', {strict:true}, function(err, col3) 
                     {
                         test.equal(null, err);
-                        db.close();
                     });
+
+                    db.createCollection('users', function(err, result) 
+                    {
+                        db.collection('users', {strict:true}, function(err, col3) 
+                        {
+                            test.equal(null, err);
+                        });
+
+                        // Return the information of all collections, using the callback format
+                        db.listCollections().toArray(function(err, items) 
+                        {
+                          test.ok(items.length >= 1);
+                          console.log(items)
+                    
+                          db.close();
+                        });
+                    });
+
                 });
             });
         });
