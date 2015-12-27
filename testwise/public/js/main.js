@@ -9,6 +9,10 @@ angular.module('TestWise', ['ui.bootstrap'])
       controller: 'LoginModalInstanceCtrl as ctrl',
       backdrop: 'static'
     });
+    modalInstance.result.then(function(data){
+      // Set token on scope
+      self.token = data.token;
+    });
   };
 }])
 
@@ -30,6 +34,7 @@ angular.module('TestWise', ['ui.bootstrap'])
       } else {
         // Logged in
         alert("Logged in...");
+        $modalInstance.close(data);
       }
     });
   };

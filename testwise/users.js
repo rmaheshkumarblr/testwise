@@ -1,6 +1,6 @@
 // var mongoose = require('mongoose'),
 // 	users = require('./models/users')
-
+var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     crypto = require('crypto');
@@ -34,7 +34,7 @@ exports.addUser = function( username, password, callback )
 	});
 }
 
-exports.getUser = function(username, password, callback) {
+exports.getUser = function(username, password, secret, callback) {
   User.findOne({
     username: username,
     password: password
@@ -45,9 +45,15 @@ exports.getUser = function(username, password, callback) {
       if(users == null) {
         callback({"auth": 0});
       } else {
-        var res = users.inspect()
-        res["auth"] = 1;
-        callback(res);
+        var data = {};
+        data.username = users.username;
+        data.password = users.password;
+        // Create web token
+        var token = jwt.sign(data, secret, {
+          expiresInSeconds: 3600 // 1 hour
+        });
+        data.token = token;
+        callback(data);
       }
     }
   });

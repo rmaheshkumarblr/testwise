@@ -13,7 +13,7 @@ router.get('/createNewUser', function(req, res, next) {
 });
 
 router.post('/dbCreateUser', function(req, res, next) {
-	console.log(req.body.name)
+	// Get Secret
 	users.addUser(req.body.name, req.body.password, function(){
 		res.write("Added Record");
 		res.end();
@@ -22,8 +22,12 @@ router.post('/dbCreateUser', function(req, res, next) {
 
 router.post('/login', function(req, res, next){
 	// res.write('something...');
-  users.getUser(req.body.params.username, req.body.params.password, function(data){
+  var secret = req.app.get('secret');
+  users.getUser(req.body.params.username, req.body.params.password, secret, function(data){
     res.json(data);
+    if(data["auth"] == 1) {
+      res.cookie("userid", data["_id"]);
+    }
     res.end();
   });
 });
