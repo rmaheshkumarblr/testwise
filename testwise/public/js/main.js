@@ -10,3 +10,5 @@ document.getElementById("createNewUser").onclick = function ()
 {
     location.href = "createNewUser";
 };
+
+
