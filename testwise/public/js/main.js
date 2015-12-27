@@ -16,15 +16,21 @@ angular.module('TestWise', ['ui.bootstrap'])
   var self = this;
   self.login = function() {
     // Login logic goes here
-    $http.get('/login', {
+    $http.post('/login', {
       params: {
         username: self.username,
         password: self.password
       }
     })
     .success(function(data, status, headers, config){
-      //
       console.log(data);
+      if(data["auth"] == 0) {
+        // Not Logged in
+        alert("Username and Password don't match")
+      } else {
+        // Logged in
+        alert("Logged in...");
+      }
     });
   };
   self.cancel = function () {

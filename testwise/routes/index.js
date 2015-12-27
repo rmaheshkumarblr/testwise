@@ -20,9 +20,12 @@ router.post('/dbCreateUser', function(req, res, next) {
 	});
 });
 
-router.get('/login', function(req, res, next){
-	res.write('something...');
-	res.end();
+router.post('/login', function(req, res, next){
+	// res.write('something...');
+  users.getUser(req.body.params.username, req.body.params.password, function(data){
+    res.json(data);
+    res.end();
+  });
 });
 
 module.exports = router;

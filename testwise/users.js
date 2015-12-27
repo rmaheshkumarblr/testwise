@@ -34,6 +34,25 @@ exports.addUser = function( username, password, callback )
 	});
 }
 
+exports.getUser = function(username, password, callback) {
+  User.findOne({
+    username: username,
+    password: password
+  },function(err, users){
+    if(err) {
+      console.log(err);
+    } else {
+      if(users == null) {
+        callback({"auth": 0});
+      } else {
+        var res = users.inspect()
+        res["auth"] = 1;
+        callback(res);
+      }
+    }
+  });
+};
+
 exports.updateUser = function( username, password )
 {
 	var usernameTemp = new User({
@@ -62,4 +81,3 @@ exports.updateUser = function( username, password )
 // 		console.log("Populated the database")
 // 	}
 // })
-
