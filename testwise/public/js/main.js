@@ -31,11 +31,3 @@ angular.module('TestWise', ['ui.bootstrap'])
     $modalInstance.dismiss('cancel');
   };
 }]);
-
-
-document.getElementById("createNewUser").onclick = function () 
-{
-    location.href = "createNewUser";
-};
-
-

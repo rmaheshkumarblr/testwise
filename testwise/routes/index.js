@@ -18,6 +18,7 @@ router.post('/dbCreateUser', function(req, res, next) {
 		res.write("Added Record");
 		res.end();
 	});
+});
 
 router.get('/login', function(req, res, next){
 	res.write('something...');
