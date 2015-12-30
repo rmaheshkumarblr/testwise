@@ -1,8 +1,16 @@
 "use strict"
 
 angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
-.controller('MainController', ['$modal', '$cookies', function($modal, $cookies){
+.controller('MainController', ['$modal', '$cookies', '$http', '$state', function($modal, $cookies, $http, $state){
   var self = this;
+  // Authenticate
+  $http.get('/authenticate')
+  .success(function(data){
+    if(data["auth"] == 1) {
+      //authenticated
+      $state.go('loggedin');
+    }
+  });
   self.openLoginDialog = function() {
     var modalInstance = $modal.open({
       templateUrl: 'templates/login-modal.html',
@@ -17,11 +25,31 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
 }])
 .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/');
-  $stateProvider.state('testwise', {
+  $stateProvider.state('index', {
     url: '/',
     views: {
       '': {
         templateUrl: '/partials/landingpage',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
+      },
+      'login': {
+        templateUrl: 'partials/loginbutton',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
+      }
+    }
+  })
+  .state('loggedin', {
+    url: '/',
+    views: {
+      '': {
+        templateUrl: '/partials/landingpage',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
+      },
+      'login': {
+        templateUrl: 'partials/loggedin',
         controller: 'MainController',
         controllerAs: 'ctrl'
       }

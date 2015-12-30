@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var config = require('./config');
 var routes = require('./routes/index');
+var jwt = require('jsonwebtoken');
 // var users = require('./routes/users');
 
 var app = express();
@@ -27,6 +28,25 @@ var publicDir = path.join(__dirname, 'public');
 app.use('/', routes);
 app.get('/', function(req, res){
   res.sendFile(publicDir + '/index.html');
+});
+
+app.get('/authenticate', function(req, res){
+  // check header or url parameters or post parameters for token
+  var token = req.cookies['_xsrf'];
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('secret'), function(err, decoded) {
+      if (err) {
+        return res.json({ auth: 0 });
+      } else {
+        // if everything is good, save to request for use in other routes
+        return res.json({auth: 1});
+      }
+    });
+  } else {
+    return res.json({auth: 0});
+  }
 });
 
 app.get('/partials/:name', function(req, res){
