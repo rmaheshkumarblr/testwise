@@ -55,6 +55,36 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
         controllerAs: 'ctrl'
       }
     }
+  })
+  .state('loggedin.addtest', {
+    url: '/',
+    views: {
+      'maincontent': {
+        templateUrl: 'partials/addtest',
+        controller: 'AddTestController',
+        controllerAs: 'ctrl'
+      }
+    }
+  })
+  .state('loggedin.edittest', {
+    url: '/',
+    views: {
+      'maincontent': {
+        templateUrl: 'partials/edittest',
+        controller: 'EditTestController',
+        controllerAs: 'ctrl'
+      }
+    }
+  })
+  .state('loggedin.history', {
+    url: '/',
+    views: {
+      'maincontent': {
+        templateUrl: 'partials/history',
+        controller: 'HistoryController',
+        controllerAs: 'ctrl'
+      }
+    }
   });
 }])
 .controller('LoginModalInstanceCtrl', ['$modalInstance', '$http', '$cookies', function ($modalInstance, $http, $cookies) {
