@@ -20,6 +20,7 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
     modalInstance.result.then(function(data){
       // Set token on scope
       self.token = data.token;
+      $state.go('loggedin');
     });
   };
 }])
@@ -44,7 +45,7 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
     url: '/',
     views: {
       '': {
-        templateUrl: '/partials/landingpage',
+        templateUrl: '/partials/home',
         controller: 'MainController',
         controllerAs: 'ctrl'
       },
@@ -70,10 +71,9 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
       console.log(data);
       if(data["auth"] == 0) {
         // Not Logged in
-        alert("Username and Password don't match")
+        // Handle failed authentication
       } else {
         // Logged in
-        alert("Logged in...");
         $modalInstance.close(data);
       }
     });
