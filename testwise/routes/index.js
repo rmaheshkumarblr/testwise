@@ -24,10 +24,10 @@ router.post('/login', function(req, res, next){
 	// res.write('something...');
   var secret = req.app.get('secret');
   users.getUser(req.body.params.username, req.body.params.password, secret, function(data){
-    res.json(data);
     if(data["auth"] == 1) {
-      res.cookie("userid", data["_id"]);
+      res.cookie('_xsrf', data['token']);
     }
+    res.json(data);
     res.end();
   });
 });

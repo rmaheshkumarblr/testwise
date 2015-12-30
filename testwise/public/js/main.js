@@ -1,8 +1,16 @@
 "use strict"
 
-angular.module('TestWise', ['ui.bootstrap', 'ui.router'])
-.controller('MainController', ['$modal', function($modal){
+angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
+.controller('MainController', ['$modal', '$cookies', '$http', '$state', function($modal, $cookies, $http, $state){
   var self = this;
+  // Authenticate
+  $http.get('/authenticate')
+  .success(function(data){
+    if(data["auth"] == 1) {
+      //authenticated
+      $state.go('loggedin');
+    }
+  });
   self.openLoginDialog = function() {
     var modalInstance = $modal.open({
       templateUrl: 'templates/login-modal.html',
@@ -12,23 +20,44 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router'])
     modalInstance.result.then(function(data){
       // Set token on scope
       self.token = data.token;
+      $state.go('loggedin');
     });
   };
 }])
 .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
   $urlRouterProvider.otherwise('/');
-  $stateProvider.state('testwise', {
+  $stateProvider.state('index', {
     url: '/',
     views: {
       '': {
         templateUrl: '/partials/landingpage',
         controller: 'MainController',
         controllerAs: 'ctrl'
+      },
+      'login': {
+        templateUrl: 'partials/loginbutton',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
+      }
+    }
+  })
+  .state('loggedin', {
+    url: '/',
+    views: {
+      '': {
+        templateUrl: '/partials/home',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
+      },
+      'login': {
+        templateUrl: 'partials/loggedin',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
       }
     }
   });
 }])
-.controller('LoginModalInstanceCtrl', ['$modalInstance', '$http',function ($modalInstance, $http) {
+.controller('LoginModalInstanceCtrl', ['$modalInstance', '$http', '$cookies', function ($modalInstance, $http, $cookies) {
   var self = this;
   self.login = function() {
     // Login logic goes here
@@ -42,10 +71,9 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router'])
       console.log(data);
       if(data["auth"] == 0) {
         // Not Logged in
-        alert("Username and Password don't match")
+        // Handle failed authentication
       } else {
         // Logged in
-        alert("Logged in...");
         $modalInstance.close(data);
       }
     });
