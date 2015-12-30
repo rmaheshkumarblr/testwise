@@ -1,0 +1,28 @@
+<html ng-app="TestWise"></html>
+<head>
+  <title>Testwise</title>
+</head>
+<body ng-controller="MainController as ctrl">
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header"><a class="navbar-brand brand-title brandname">Testwise</a></div>
+      <div style="" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active login"><a href="#" ng-click="ctrl.openLoginDialog()">Login<span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- <p class="main-title"><i class="fa fa-graduation-cap splash"></i></p>
+  <p class="main-desc">Create, take, and analyze tests</p> -->
+  <div ui-view></div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="js/main.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+</body>
+</html>

@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var publicDir = path.join(__dirname, 'public');
 
-// app.use('/', routes);
+app.use('/', routes);
 app.get('/', function(req, res){
   res.sendFile(publicDir + '/index.html');
 });
