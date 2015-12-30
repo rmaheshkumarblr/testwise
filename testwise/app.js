@@ -22,7 +22,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+var publicDir = path.join(__dirname, 'public');
+
+// app.use('/', routes);
+app.get('/', function(req, res){
+  res.sendFile(publicDir + '/index.html');
+});
+
+app.get('/partials/:name', function(req, res){
+  var name = req.params.name;
+  res.render(name);
+});
+// app.get('/templates/:filename', routes.partials);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler

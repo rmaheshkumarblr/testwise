@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module('TestWise', ['ui.bootstrap'])
+angular.module('TestWise', ['ui.bootstrap', 'ui.router'])
 .controller('MainController', ['$modal', function($modal){
   var self = this;
   self.openLoginDialog = function() {
@@ -15,7 +15,19 @@ angular.module('TestWise', ['ui.bootstrap'])
     });
   };
 }])
-
+.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
+  $urlRouterProvider.otherwise('/');
+  $stateProvider.state('testwise', {
+    url: '/',
+    views: {
+      '': {
+        templateUrl: '/partials/landingpage',
+        controller: 'MainController',
+        controllerAs: 'ctrl'
+      }
+    }
+  });
+}])
 .controller('LoginModalInstanceCtrl', ['$modalInstance', '$http',function ($modalInstance, $http) {
   var self = this;
   self.login = function() {
