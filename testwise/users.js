@@ -53,6 +53,7 @@ exports.getUser = function(username, password, secret, callback) {
           expiresInSeconds: 3600 // 1 hour
         });
         data.token = token;
+        data["auth"] = 1;
         callback(data);
       }
     }

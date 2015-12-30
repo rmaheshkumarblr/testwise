@@ -1,7 +1,7 @@
 "use strict"
 
-angular.module('TestWise', ['ui.bootstrap', 'ui.router'])
-.controller('MainController', ['$modal', function($modal){
+angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
+.controller('MainController', ['$modal', '$cookies', function($modal, $cookies){
   var self = this;
   self.openLoginDialog = function() {
     var modalInstance = $modal.open({
@@ -28,7 +28,7 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router'])
     }
   });
 }])
-.controller('LoginModalInstanceCtrl', ['$modalInstance', '$http',function ($modalInstance, $http) {
+.controller('LoginModalInstanceCtrl', ['$modalInstance', '$http', '$cookies', function ($modalInstance, $http, $cookies) {
   var self = this;
   self.login = function() {
     // Login logic goes here
