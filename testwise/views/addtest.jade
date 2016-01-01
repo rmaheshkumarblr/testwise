@@ -1,1 +1,19 @@
-| Code to add test goes here
+div(class="row")
+  div(class="form-group col-md-6")
+    label(for="testname") Test Name
+    input(type="text", id="testname", class="form-control", ng-model="testname")
+    label(for="testcategory") Test Category
+    input(type="text", id="testcategory", class="form-control", ng-model="testcategory")
+    label(for="numberofquestions") Number of Questions
+    br
+    .btn-group(uib-dropdown='', is-open='status.isopen')
+      button#single-button.btn.btn-default(type='button', uib-dropdown-toggle='', ng-disabled='disabled')
+        | 5
+        span.caret
+      ul.uib-dropdown-menu(role='menu', aria-labelledby='single-button')
+        li(role='menuitem')
+          a 5
+        li(role='menuitem')
+          a 10
+        li(role='menuitem')
+          a 15

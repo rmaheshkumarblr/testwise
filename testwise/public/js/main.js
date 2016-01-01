@@ -111,4 +111,7 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
   self.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
-}]);
+}])
+.controller('AddTestController', function(){
+  //
+});
