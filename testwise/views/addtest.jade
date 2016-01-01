@@ -12,8 +12,9 @@ div(class="row")
         span.caret
       ul.uib-dropdown-menu(role='menu', aria-labelledby='single-button')
         li(role='menuitem')
-          a 5
+          a(ng-click="ctrl.setNumberofQuestions(5)") 5
         li(role='menuitem')
-          a 10
+          a(ng-click="ctrl.setNumberofQuestions(10)") 10
         li(role='menuitem')
-          a 15
+          a(ng-click="ctrl.setNumberofQuestions(15)") 15
+    div(class="questions")

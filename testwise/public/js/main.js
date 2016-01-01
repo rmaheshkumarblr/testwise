@@ -113,5 +113,8 @@ angular.module('TestWise', ['ui.bootstrap', 'ui.router', 'ngCookies'])
   };
 }])
 .controller('AddTestController', function(){
-  //
+  var self = this;
+  self.setNumberofQuestions = function(value) {
+    self.numberOfQuestions = value;
+  };
 });
