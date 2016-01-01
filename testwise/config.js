@@ -1,3 +1,3 @@
 module.exports = {
-  secret: '' //Add secret here - Do not commit
+  secret: 'TEST' //Add secret here - Do not commit
 };
