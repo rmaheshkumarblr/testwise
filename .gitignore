@@ -30,3 +30,6 @@ node_modules
 
 #Ignoring the MongoDB data
 data/*
+
+#Ignore .idea components
+.idea
