@@ -16,4 +16,3 @@ If you plan to fork, the steps to get this up and running are as follows:
 6) Go to http://localhost:3000/createNewUser and create a new user
 
 7) Go to http://localhost:3000/#/ and login using the username and password
-
